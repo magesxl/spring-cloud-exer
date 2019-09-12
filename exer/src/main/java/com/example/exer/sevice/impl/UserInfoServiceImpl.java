@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 public class UserInfoServiceImpl implements UserInfoService {
     @Resource
     private UserInfoDao userInfoDao;
+
     @Override
     public UserInfo findByUsername(String username) {
         System.out.println("UserInfoServiceImpl.findByUsername()");

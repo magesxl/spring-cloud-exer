@@ -23,15 +23,15 @@ public class LambdaExer {
         t2.start();
 
 
-        List<String> list  = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         list.add("sdddd");
         list.add("lki");
         list.add("opliij");
         list.forEach(System.out::println);
-        Collections.sort(list, (a,b)->a.compareTo(b));
- //       list.sort((String a, String b)-> b.compareTo(a));
+        Collections.sort(list, (a, b) -> a.compareTo(b));
+        //       list.sort((String a, String b)-> b.compareTo(a));
         list.forEach(System.out::println);
-        List<String> list1 = list.parallelStream().filter((name)->name.startsWith("s")).collect(Collectors.toList());
+        List<String> list1 = list.parallelStream().filter((name) -> name.startsWith("s")).collect(Collectors.toList());
         System.out.println(list1);
 
     }

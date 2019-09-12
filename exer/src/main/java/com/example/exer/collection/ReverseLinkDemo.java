@@ -20,8 +20,8 @@ public class ReverseLinkDemo {
         node5.next = node6;
         node6.next = node7;
         printList(node1);
-        Node<Integer> node  = reverseLink1(node1);
- //       Node<Integer> node = reverseLink3(node1);
+        Node<Integer> node = reverseLink1(node1);
+        //       Node<Integer> node = reverseLink3(node1);
         printList(node);
 
     }
@@ -46,6 +46,7 @@ public class ReverseLinkDemo {
         }
         return newHead;
     }
+
     /**
      * 递归方法2。先找到最后一个节点，然后从最后一个节点之前的那个节点的方法体中开始将下一个指向当前一个,
      * 然后当前节点反转时其后面的节点已经进行反转了，不需要管。最后返回原来的最后一个节点。

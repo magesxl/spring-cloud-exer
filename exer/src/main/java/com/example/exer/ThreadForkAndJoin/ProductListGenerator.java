@@ -12,7 +12,7 @@ public class ProductListGenerator {
         List<Product> res = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             Product product = new Product();
-            product.setName("Product "+i);
+            product.setName("Product " + i);
             product.setPrice(BigDecimal.TEN);
             res.add(product);
         }

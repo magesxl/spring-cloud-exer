@@ -10,11 +10,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class GatewayZuulApplication {
 
-	@Bean
-	public AccessFilter accessFilter(){
-		return new AccessFilter();
-	}
-	public static void main(String[] args) {
-		SpringApplication.run(GatewayZuulApplication.class, args);
-	}
+    @Bean
+    public AccessFilter accessFilter() {
+        return new AccessFilter();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayZuulApplication.class, args);
+    }
 }

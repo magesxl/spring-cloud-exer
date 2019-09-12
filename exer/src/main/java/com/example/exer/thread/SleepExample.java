@@ -39,7 +39,7 @@ public class SleepExample extends Thread {
 
     private void print() {
         if ("A".equals(getName())) {
-            System.out.println(String.format("第%d次打印",currentCount/3+1));
+            System.out.println(String.format("第%d次打印", currentCount / 3 + 1));
         }
         System.out.println(getName());
     }

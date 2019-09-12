@@ -31,8 +31,9 @@ public class BaseThreadTest {
         });
 
 
-
-        FutureTask<Integer> f2 = new FutureTask<Integer>(()->{return 2;});
+        FutureTask<Integer> f2 = new FutureTask<Integer>(() -> {
+            return 2;
+        });
 //        Thread t2 = new Thread(f1);
 //
 //        t2.start();

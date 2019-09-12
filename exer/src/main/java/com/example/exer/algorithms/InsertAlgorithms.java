@@ -12,7 +12,7 @@ public class InsertAlgorithms {
 
     public static void main(String... args) {
         int[] a = {1, 6, 3, 8, 2, 4};
-               insertSort(a);
+        insertSort(a);
         //insertSort1(a);
         //binarySort(a);
         System.out.println(Arrays.toString(a));

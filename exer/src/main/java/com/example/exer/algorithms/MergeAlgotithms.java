@@ -14,19 +14,19 @@ public class MergeAlgotithms {
         int twoBegin = oneLastIndex + 1;        //两个有序序列的第二个有序序列的第一个元素的下标
         int newAlo = oneFirstIndex;             //新数组中的指向
         while (oneBegin <= oneLastIndex && twoBegin <= twoLastIndex) {  //两个有序序列都没有遍历完
-            if(oldArray[oneBegin]<oldArray[twoBegin]){
+            if (oldArray[oneBegin] < oldArray[twoBegin]) {
                 newArray[newAlo++] = oldArray[oneBegin++];
-            }else{
+            } else {
                 newArray[newAlo++] = oldArray[twoBegin++];
             }
         }
 
         //当其中一个序列遍历完之后，将剩下那个序列加到新数组中,判断是哪一个序列没有遍历完
-        while(oneFirstIndex<=oneLastIndex){
+        while (oneFirstIndex <= oneLastIndex) {
             newArray[newAlo++] = oldArray[oneFirstIndex++];
         }
 
-        while(twoBegin<=twoLastIndex){
+        while (twoBegin <= twoLastIndex) {
             newArray[newAlo++] = oldArray[twoBegin++];
         }
     }

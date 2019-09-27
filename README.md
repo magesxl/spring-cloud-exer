@@ -1,3 +1,4 @@
+#Spring Cloud模块
 模块包括：服务发现（Eureka），断路器（Hystrix），智能路有（Zuul），客户端负载均衡（Ribbon）
 
 eureka-server  服务注册中心
@@ -94,7 +95,7 @@ filterOrder：通过int值来定义过滤器的执行顺序，数值越小优先
 shouldFilter：返回一个boolean类型来判断该过滤器是否要执行。我们可以通过此方法来指定过滤器的有效范围。
 run：过滤器的具体逻辑。在该函数中，我们可以实现自定义的过滤逻辑，来确定是否要拦截当前的请求，不对其进行后续的路由，或是在请求路由返回结果之后，对处理结果做一些加工等。
 
-
+#Spring Cloud Sleuth监控
 第一个值：trace-1，它记录了应用的名称，也就是application.properties中spring.application.name参数配置的属性。
 第二个值：f410ab57afd5c145，Spring Cloud Sleuth生成的一个ID，称为Trace ID，它用来标识一条请求链路。一条请求链路中包含一个Trace ID，多个Span ID。
 第三个值：a9f2118fa2019684，Spring Cloud Sleuth生成的另外一个ID，称为Span ID，它表示一个基本的工作单元，比如：发送一个HTTP请求。
@@ -103,24 +104,35 @@ Spring Cloud Sleuth会在产生跟踪信息的时候调用它来为跟踪信息�
 默认情况下，Sleuth会使用PercentageBasedSampler实现的抽样策略，以请求百分比的方式配置和收集跟踪信息，我们可以通过在application.properties中配置下面的参数对其百分比值进行设置，它的默认值为0.1，代表收集10%的请求跟踪信息。
 http://blog.didispace.com/spring-cloud-starter-dalston-8-6/
 
+#Spring Cloud Nacos
+  ##Nacos提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。
+   + 使用Nacos作为微服务架构中的注册中心（替代：eurekba、consul等传统方案）以及配置中心（spring cloud config）来使用
+   + 注意：没注册发现一般是版本不兼容问题
+   + 使用mysql配置（注意使用mysql8的报错问题  https://blog.csdn.net/qq_32628775/article/details/86609739 ）
+        spring.datasource.platform=mysql 
+        db.num=1
+        db.url.0=jdbc:mysql://localhost:3306/nacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&serverTimezone=GMT%2B8
+        db.user=root
+        db.password=mysql
+   - namespace的配置不是使用名称，而是使用Namespace的ID
+#SpringCloud相关注解
++ @EnableEurekaServer  注解启动一个服务注册中心提供给其他应用进行对话
 
-@EnableEurekaServer  注解启动一个服务注册中心提供给其他应用进行对话
++ @EnableDiscoveryClient注解，该注解能激活Eureka中的DiscoveryClient实现，才能实现Controller中对服务信息的输出。
 
-@EnableDiscoveryClient注解，该注解能激活Eureka中的DiscoveryClient实现，才能实现Controller中对服务信息的输出。
++ @LoadBalanced注解开启均衡负载能力
 
-@LoadBalanced注解开启均衡负载能力
++ @EnableFeignClients 在应用主类中通过注解开启Feign功能
 
-@EnableFeignClients 在应用主类中通过注解开启Feign功能
++ @FeignClient("compute-service")注解来绑定该接口对应compute-service服务
 
-@FeignClient("compute-service")注解来绑定该接口对应compute-service服务
++ @EnableCircuitBreaker注解开启断路器功能
 
-@EnableCircuitBreaker注解开启断路器功能
+* @EnableConfigServer注解，开启Config Server激活对配置中心的支持
 
-@EnableConfigServer注解，开启Config Server激活对配置中心的支持
+* @RefreshScope  使用该注解的类，会在接到SpringCloud配置中心配置刷新的时候，自动将新的配置更新到该类对应的字段中。
 
-@RefreshScope  使用该注解的类，会在接到SpringCloud配置中心配置刷新的时候，自动将新的配置更新到该类对应的字段中。
+- @EnableZuulProxy，支持网关路由
 
-@EnableZuulProxy，支持网关路由
-
-@EnableZipkinServer 支持收集跟踪
+- @EnableZipkinServer 支持收集跟踪
 
